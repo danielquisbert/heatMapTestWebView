@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<!-- saved from url=(0059)https://handsondataviz.github.io/leaflet-heatmap/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Bicycle Theft in London – Leaflet Heatmap Template</title>
+
+  <link rel="stylesheet" href="./heatmaptest2_files/tachyons.min.css">
+  <link rel="stylesheet" href="./heatmaptest2_files/leaflet.css">
+
+  <script src="./heatmaptest2_files/leaflet.js"></script>
+  <script src="./heatmaptest2_files/leaflet-heat.js"></script>
+  <script src="./heatmaptest2_files/jquery.min.js"></script>
+
+  <script src="./heatmaptest2_files/papaparse.min.js"></script>
+
+<style type="text/css">@font-face { font-family: Roboto; src: url("chrome-extension://mcgbeeipkmelnpldkobichboakdfaeon/css/Roboto-Regular.ttf"); }</style></head>
+
+<body class="helvetica">
+
+  <div id="map" class="vh-100 vw-100 bg-near-white leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0" style="position: relative; outline: none;"><div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(0px, 0px, 0px);"><div class="leaflet-pane leaflet-tile-pane"><div class="leaflet-layer " style="z-index: 1; opacity: 1;"><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 19; transform: translate3d(0px, 0px, 0px) scale(1);"><img alt="" role="presentation" src="./heatmaptest2_files/340.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(777px, 279px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/339.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(777px, 23px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/340(1).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(521px, 279px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/340(2).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1033px, 279px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/341.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(777px, 535px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/339(1).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(521px, 23px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/339(2).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1033px, 23px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/341(1).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(521px, 535px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/341(2).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1033px, 535px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/338.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(777px, -233px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/340(3).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(265px, 279px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/340(4).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1289px, 279px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/342.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(777px, 791px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/338(1).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(521px, -233px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/338(2).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1033px, -233px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/339(3).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(265px, 23px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/339(4).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1289px, 23px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/341(3).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(265px, 535px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/341(4).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1289px, 535px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/342(1).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(521px, 791px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/342(2).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1033px, 791px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/338(3).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(265px, -233px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/338(4).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1289px, -233px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/342(3).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(265px, 791px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/342(4).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1289px, 791px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/340(5).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(9px, 279px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/340(6).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1545px, 279px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/339(5).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(9px, 23px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/339(6).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1545px, 23px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/341(5).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(9px, 535px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/341(6).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1545px, 535px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/338(5).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(9px, -233px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/338(6).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1545px, -233px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/342(5).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(9px, 791px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/342(6).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1545px, 791px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/340(7).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-247px, 279px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/340(8).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1801px, 279px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/339(7).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-247px, 23px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/339(8).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1801px, 23px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/341(7).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-247px, 535px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/341(8).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1801px, 535px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/338(7).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-247px, -233px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/338(8).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1801px, -233px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/342(7).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-247px, 791px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/342(8).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1801px, 791px, 0px); opacity: 1;"></div></div></div><div class="leaflet-pane leaflet-shadow-pane"><div class="leaflet-layer " style="z-index: 1; opacity: 1;"><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 19; transform: translate3d(0px, 0px, 0px) scale(1);"><img alt="" role="presentation" src="./heatmaptest2_files/340(9).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(777px, 279px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/339(9).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(777px, 23px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/340(10).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(521px, 279px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/340(11).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1033px, 279px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/341(9).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(777px, 535px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/339(10).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(521px, 23px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/339(11).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1033px, 23px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/341(10).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(521px, 535px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/341(11).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1033px, 535px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/338(9).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(777px, -233px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/340(12).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(265px, 279px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/340(13).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1289px, 279px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/342(9).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(777px, 791px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/338(10).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(521px, -233px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/338(11).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1033px, -233px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/339(12).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(265px, 23px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/339(13).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1289px, 23px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/341(12).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(265px, 535px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/341(13).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1289px, 535px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/342(10).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(521px, 791px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/342(11).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1033px, 791px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/338(12).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(265px, -233px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/338(13).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1289px, -233px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/342(12).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(265px, 791px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/342(13).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1289px, 791px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/340(14).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(9px, 279px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/340(15).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1545px, 279px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/339(14).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(9px, 23px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/339(15).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1545px, 23px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/341(14).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(9px, 535px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/341(15).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1545px, 535px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/338(14).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(9px, -233px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/338(15).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1545px, -233px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/342(14).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(9px, 791px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/342(15).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1545px, 791px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/340(16).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-247px, 279px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/340(17).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1801px, 279px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/339(16).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-247px, 23px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/339(17).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1801px, 23px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/341(16).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-247px, 535px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/341(17).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1801px, 535px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/338(16).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-247px, -233px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/338(17).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1801px, -233px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/342(16).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-247px, 791px, 0px); opacity: 1;"><img alt="" role="presentation" src="./heatmaptest2_files/342(17).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1801px, 791px, 0px); opacity: 1;"></div></div></div><div class="leaflet-pane leaflet-overlay-pane"><canvas class="leaflet-heatmap-layer leaflet-layer leaflet-zoom-animated" width="1920" height="835" style="transform-origin: 50% 50%; transform: translate3d(0px, 0px, 0px);"></canvas></div><div class="leaflet-pane leaflet-marker-pane"></div><div class="leaflet-pane leaflet-tooltip-pane"></div><div class="leaflet-pane leaflet-popup-pane"></div><div class="leaflet-proxy leaflet-zoom-animated" style="transform: translate3d(130999px, 87178.5px, 0px) scale(512);"></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"></div><div class="leaflet-top leaflet-right"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="https://handsondataviz.github.io/leaflet-heatmap/index.html#" title="Zoom in" role="button" aria-label="Zoom in">+</a><a class="leaflet-control-zoom-out" href="https://handsondataviz.github.io/leaflet-heatmap/index.html#" title="Zoom out" role="button" aria-label="Zoom out">−</a></div></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"><div class="leaflet-control-attribution leaflet-control"><a href="https://github.com/HandsOnDataViz/leaflet-heatmap">View data and code</a>         by <a href="https://handsondataviz.org/" target="_blank">HandsOnDataViz</a> | © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions">CARTO</a></div></div></div></div>
+
+  <div id="legend" class="bg-white fixed top-0 left-0 pa2 mt2 ml2 br1 o-90" style="z-index: 999; width: 380px">
+    <h1 class="f3 mt0">Bicycle Theft in London</h1>
+
+    <p class="measure mb1">
+      This heatmap shows hotspots of bicycle theft in London
+      in January–July 2020 according to the Metropolitan Police data.
+    </p>
+
+  </div>
+
+  <script>
+
+    var map = L.map('map', {
+      zoomControl: false, // Add zoom control separately below
+      center: [51.5, -0.1], // Initial map center
+      zoom: 10, // Initial zoom level
+      attributionControl: false, // Instead of default attribution, we add custom at the bottom of script
+      scrollWheelZoom: false
+    })
+
+    // Add zoom in/out buttons to the top-right
+    L.control.zoom({position: 'topright'}).addTo(map)
+
+    // Add baselayer
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 19
+    }).addTo(map)
+
+    // Add geographical labels only layer on top of baselayer
+    var labels = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 19,
+      pane: 'shadowPane'  // always display on top
+    }).addTo(map)
+
+   //CSV
+    $.get('https://raw.githubusercontent.com/HandsOnDataViz/leaflet-heatmap/main/data.csv', function(csvString) {
+
+      // Use PapaParse to transform file into arrays
+      var data = Papa.parse(csvString.trim()).data.filter(
+        function(row) { return row.length === 2 }
+      ).map(function(a) {
+        return [ parseFloat(a[0]), parseFloat(a[1]) ]
+      })
+
+      // Add all points into a heat layer
+      var heat = L.heatLayer(data, {
+        radius: 25
+      })
+
+      // Add the heatlayer to the map
+      heat.addTo(map)
+    })
+
+    // Add custom attribution
+    L.control.attribution({
+      prefix: '<a href="https://github.com/HandsOnDataViz/leaflet-heatmap">View data and code</a> \
+        by <a href="https://handsondataviz.org" target="_blank">HandsOnDataViz</a>'
+    }).addTo(map)
+
+  </script>
+
+
+
+
+<script>
+		function returnCommentSymbol(language = "javascript") {
+			const languageObject = {
+				bat: "@REM",
+				c: "//",
+				csharp: "//",
+				cpp: "//",
+				closure: ";;",
+				coffeescript: "#",
+				dockercompose: "#",
+				css: "/*DELIMITER*/",
+				"cuda-cpp": "//",
+				dart: "//",
+				diff: "#",
+				dockerfile: "#",
+				fsharp: "//",
+				"git-commit": "//",
+				"git-rebase": "#",
+				go: "//",
+				groovy: "//",
+				handlebars: "{{!--DELIMITER--}}",
+				hlsl: "//",
+				html: "<!--DELIMITER-->",
+				ignore: "#",
+				ini: ";",
+				java: "//",
+				javascript: "//",
+				javascriptreact: "//",
+				json: "//",
+				jsonc: "//",
+				julia: "#",
+				latex: "%",
+				less: "//",
+				lua: "--",
+				makefile: "#",
+				markdown: "<!--DELIMITER-->",
+				"objective-c": "//",
+				"objective-cpp": "//",
+				perl: "#",
+				perl6: "#",
+				php: "<!--DELIMITER-->",
+				powershell: "#",
+				properties: ";",
+				jade: "//-",
+				python: "#",
+				r: "#",
+				razor: "<!--DELIMITER-->",
+				restructuredtext: "..",
+				ruby: "#",
+				rust: "//",
+				scss: "//",
+				shaderlab: "//",
+				shellscript: "#",
+				sql: "--",
+				svg: "<!--DELIMITER-->",
+				swift: "//",
+				tex: "%",
+				typescript: "//",
+				typescriptreact: "//",
+				vb: "'",
+				xml: "<!--DELIMITER-->",
+				xsl: "<!--DELIMITER-->",
+				yaml: "#"
+			}
+			return languageObject[language].split("DELIMITER")
+		}
+		var savedChPos = 0
+		var returnedSuggestion = ''
+		let editor, doc, cursor, line, pos
+		pos = {line: 0, ch: 0}
+		var suggestionsStatus = false
+		var docLang = "python"
+		var suggestionDisplayed = false
+		var isReturningSuggestion = false
+		document.addEventListener("keydown", (event) => {
+		setTimeout(()=>{
+			editor = event.target.closest('.CodeMirror');
+			if (editor){
+				const codeEditor = editor.CodeMirror
+				if(!editor.classList.contains("added-tab-function")){
+					editor.classList.add("added-tab-function")
+					codeEditor.removeKeyMap("Tab")
+					codeEditor.setOption("extraKeys", {Tab: (cm)=>{
+
+						if(returnedSuggestion){
+							acceptTab(returnedSuggestion)
+						}
+						else{
+							cm.execCommand("defaultTab")
+						}
+					}})
+				}
+				doc = editor.CodeMirror.getDoc()
+				cursor = doc.getCursor()
+				line = doc.getLine(cursor.line)
+				pos = {line: cursor.line, ch: line.length}
+
+				if(cursor.ch > 0){
+					savedChPos = cursor.ch
+				}
+
+				const fileLang = doc.getMode().name
+				docLang = fileLang
+				const commentSymbol = returnCommentSymbol(fileLang)
+				if (event.key == "?"){
+					var lastLine = line
+					lastLine = lastLine.slice(0, savedChPos - 1)
+
+					if(lastLine.trim().startsWith(commentSymbol[0])){
+						lastLine += " "+fileLang
+						lastLine = lastLine.split(commentSymbol[0])[1]
+						window.postMessage({source: 'getQuery', payload: { data: lastLine } } )
+						isReturningSuggestion = true
+						displayGrey("\nBlackbox loading...")
+					}
+				}else if(event.key === "Enter" && suggestionsStatus && !isReturningSuggestion){
+					var query = doc.getRange({ line: Math.max(0,cursor.line-10), ch: 0 }, { line: cursor.line, ch: line.length })
+					window.postMessage({source: 'getSuggestion', payload: { data: query, language: docLang } } )
+					displayGrey("Blackbox loading...")
+				}else if(event.key === "ArrowRight" && returnedSuggestion){
+					acceptTab(returnedSuggestion)
+				}else if(event.key === "Enter" && isReturningSuggestion){
+					displayGrey("\nBlackbox loading...")
+				}else if(event.key === "Escape"){
+					displayGrey("")
+				}
+			}
+		}, 0)
+		})
+
+		function acceptTab(text){
+		if (suggestionDisplayed){
+			displayGrey("")
+			doc.replaceRange(text, pos)
+			returnedSuggestion = ""
+			updateSuggestionStatus(false)
+		}
+		}
+		function acceptSuggestion(text){
+			displayGrey("")
+			doc.replaceRange(text, pos)
+			returnedSuggestion = ""
+			updateSuggestionStatus(false)
+		}
+		function displayGrey(text){
+			if(!text){
+				document.querySelector(".blackbox-suggestion").remove()
+				return
+			}
+			var el = document.querySelector(".blackbox-suggestion")
+			if(!el){
+				el = document.createElement('span')
+				el.classList.add("blackbox-suggestion")
+				el.style = 'color:grey'
+				el.innerText = text
+			}
+			else{
+				el.innerText = text
+			}
+			
+			var lineIndex = pos.line;
+			editor.getElementsByClassName('CodeMirror-line')[lineIndex].appendChild(el)
+		}
+		function updateSuggestionStatus(s){
+			suggestionDisplayed = s
+			window.postMessage({source: 'updateSuggestionStatus', status: suggestionDisplayed, suggestion: returnedSuggestion})
+		}
+		window.addEventListener('message', (event)=>{
+		if (event.source !== window ) return
+		if (event.data.source == 'return'){
+			isReturningSuggestion = false
+			const formattedCode = formatCode(event.data.payload.data)
+			returnedSuggestion = formattedCode
+			displayGrey(formattedCode)
+			updateSuggestionStatus(true)
+		}
+		if(event.data.source == 'suggestReturn'){
+			returnedSuggestion = event.data.payload.data
+			displayGrey(event.data.payload.data)
+			updateSuggestionStatus(true)
+		}
+		if(event.data.source == 'suggestionsStatus'){
+			suggestionsStatus = event.data.payload.enabled
+		}
+		if(event.data.source == 'acceptSuggestion'){
+			
+			acceptSuggestion(event.data.suggestion)
+		}
+		})
+		document.addEventListener("keyup", function(){
+			returnedSuggestion = ""
+			updateSuggestionStatus(false)
+		})
+		function formatCode(data) {
+			if (Array.isArray(data)) {
+				var finalCode = ""
+				var pairs = []
+		
+				const commentSymbol = returnCommentSymbol(docLang)
+				data.forEach((codeArr, idx) => {
+					const code = codeArr[0]
+					var desc = codeArr[1]
+					const descArr = desc.split("\n")
+					var finalDesc = ""
+					descArr.forEach((descLine, idx) => {
+						const whiteSpace = descLine.search(/\S/)
+						if (commentSymbol.length < 2 || idx === 0) {
+							finalDesc += insert(descLine, whiteSpace, commentSymbol[0])
+						}
+						if (commentSymbol.length > 1 && idx === descArr.length - 1) {
+							finalDesc = finalDesc + commentSymbol[1] + "\n"
+						}
+					})
+		
+					finalCode += finalDesc + "\n\n" + code
+					pairs.push(finalCode)
+				})
+				return "\n"+pairs.join("\n")
+			}
+		
+			return "\n"+data
+		}
+		
+		function insert(str, index, value) {
+			return str.substr(0, index) + value + str.substr(index)
+		}
+	</script><img id="fake-image" src="chrome-extension://mcgbeeipkmelnpldkobichboakdfaeon/images/pixel.png" style="display: none; visibility: hidden; width: 1920px; height: 835px;"><div class="jcrop-holder" style="width: 1920px; height: 835px; position: relative;"><div style="position: absolute; z-index: 600;"><div style="width: 100%; height: 100%; z-index: 310; position: absolute; overflow: hidden;"><img src="chrome-extension://mcgbeeipkmelnpldkobichboakdfaeon/images/pixel.png" style="border: none; visibility: visible; margin: 0px; padding: 0px; position: absolute; top: 0px; left: 0px; width: 1920px; height: 835px;"><div class="jcrop-hline" style="position: absolute; opacity: 0.4;"></div><div class="jcrop-hline bottom" style="position: absolute; opacity: 0.4;"></div><div class="jcrop-vline right" style="position: absolute; opacity: 0.4;"></div><div class="jcrop-vline" style="position: absolute; opacity: 0.4;"></div><div class="jcrop-tracker" style="cursor: move; position: absolute; z-index: 360;"></div></div><div style="width: 100%; height: 100%; z-index: 320; display: none;"><div class="ord-n jcrop-dragbar" style="cursor: n-resize; position: absolute; z-index: 370;"></div><div class="ord-s jcrop-dragbar" style="cursor: s-resize; position: absolute; z-index: 371;"></div><div class="ord-e jcrop-dragbar" style="cursor: e-resize; position: absolute; z-index: 372;"></div><div class="ord-w jcrop-dragbar" style="cursor: w-resize; position: absolute; z-index: 373;"></div><div class="ord-n jcrop-handle" style="cursor: n-resize; position: absolute; z-index: 374; opacity: 0.5;"></div><div class="ord-s jcrop-handle" style="cursor: s-resize; position: absolute; z-index: 375; opacity: 0.5;"></div><div class="ord-e jcrop-handle" style="cursor: e-resize; position: absolute; z-index: 376; opacity: 0.5;"></div><div class="ord-w jcrop-handle" style="cursor: w-resize; position: absolute; z-index: 377; opacity: 0.5;"></div><div class="ord-nw jcrop-handle" style="cursor: nw-resize; position: absolute; z-index: 378; opacity: 0.5;"></div><div class="ord-ne jcrop-handle" style="cursor: ne-resize; position: absolute; z-index: 379; opacity: 0.5;"></div><div class="ord-se jcrop-handle" style="cursor: se-resize; position: absolute; z-index: 380; opacity: 0.5;"></div><div class="ord-sw jcrop-handle" style="cursor: sw-resize; position: absolute; z-index: 381; opacity: 0.5;"></div></div></div><div class="jcrop-tracker" style="width: 1924px; height: 839px; position: absolute; top: -2px; left: -2px; z-index: 290; cursor: crosshair;"></div><input type="radio" class="jcrop-keymgr" style="position: fixed; left: -120px; width: 12px;"><img src="chrome-extension://mcgbeeipkmelnpldkobichboakdfaeon/images/pixel.png" style="display: block; visibility: visible; width: 1920px; height: 835px; border: none; margin: 0px; padding: 0px; position: absolute; top: 0px; left: 0px;"></div></body></html>
